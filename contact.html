@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Contact Me</title>
+</head>
+<body>
+    <ul class="nav">
+        <li class="nav-li"><a href="index.html">Home</a></li>
+        <li class="nav-li"><a href="about.html">About</a></li>
+        <li class="nav-li"><a href="skills.html">Skills</a></li>
+        <li class="nav-li"><a href="project.html">Projects</a></li>
+        <li class="nav-li"><a href="contact.html">Contact me</a></li>
+    </ul>
+    <section id="contact">
+        <div class="contact-container">
+            <h2>Contact Me</h2><br>
+            <form action="mailto:your-email@example.com" method="post" enctype="text/plain">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                </div>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </section>
+</body>
+</html>
