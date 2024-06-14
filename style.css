@@ -1,0 +1,157 @@
+/* Resetting default margin and padding */
+body, ul {
+    margin: 0;
+    padding: 0;
+}
+
+/* Styling the navigation bar */
+.nav {
+    background-color: #333;
+    list-style-type: none;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.nav-li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.nav-li a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-family: Arial, sans-serif;
+}
+
+.nav-li a:hover {
+    background-color: #555;
+}
+
+/* Styling the container for title and image */
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items:center;
+    height: 100vh;
+}
+
+/* Styling the title */
+.title {
+    font-size: 40px;
+    color: #333;
+    font-family: Arial, serif;
+    margin-left: 45px;
+}
+
+/* Styling the profile photo */
+img {
+    border-radius: 50%;
+    max-width: 350px;
+    margin-right: 20px;
+}
+
+
+/* Skills page styles */
+#skills {
+    background-color: #f8f8f8;
+    padding: 50px 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.skills-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.skills-container h2 {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 20px;
+    margin-top: 5px;
+}
+
+.skill {
+    margin-bottom: 20px;
+}
+
+.skill h3 {
+    font-size: 24px;
+    color: #333;
+}
+
+.progress-bar {
+    background-color: #ddd;
+    height: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background-color: #4caf50; /* Green color for progress */
+}
+
+
+/* About section styles */
+#about {
+    background-color: #f8f8f8;
+    padding: 50px 0;
+}
+
+.about-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-container h2 {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    
+}
+
+.about-container p {
+    font-size: 20px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.progress-bar {
+    position: relative;
+    background: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.progress {
+    background: #83B4FF;
+    height: 100%;
+    transition: width 0.5s;
+}
+
+.percentage {
+    position: absolute;
+    right: 10px;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #0C1844;
+}
+
+
+
+
+
