@@ -1,8 +1,9 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
+import { motion } from "framer-motion";
 
-const wordVariants: Variants = {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const wordVariants: Record<string, any> = {
     hidden: { opacity: 0, y: 60, filter: "blur(12px)", scale: 0.85 },
     visible: (i: number) => ({
         opacity: 1,
@@ -12,7 +13,7 @@ const wordVariants: Variants = {
         transition: {
             delay: 0.4 + i * 0.12,
             duration: 0.7,
-            ease: [0.22, 1, 0.36, 1],
+            ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
         },
     }),
 };
