@@ -2,22 +2,6 @@
 
 import { motion } from "framer-motion";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const wordVariants: Record<string, any> = {
-    hidden: { opacity: 0, y: 60, filter: "blur(12px)", scale: 0.85 },
-    visible: (i: number) => ({
-        opacity: 1,
-        y: 0,
-        filter: "blur(0px)",
-        scale: 1,
-        transition: {
-            delay: 0.4 + i * 0.12,
-            duration: 0.7,
-            ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
-        },
-    }),
-};
-
 export const SmoothTyping = ({
     text,
     className,
@@ -34,10 +18,13 @@ export const SmoothTyping = ({
             {words.map((word, i) => (
                 <motion.span
                     key={i}
-                    custom={i}
-                    variants={wordVariants}
-                    initial="hidden"
-                    animate="visible"
+                    initial={{ opacity: 0, y: 60, filter: "blur(12px)", scale: 0.85 }}
+                    animate={{ opacity: 1, y: 0, filter: "blur(0px)", scale: 1 }}
+                    transition={{
+                        delay: 0.4 + i * 0.12,
+                        duration: 0.7,
+                        ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+                    }}
                     className="inline-block mr-[0.25em]"
                 >
                     {/* Last word gets a gradient accent */}
