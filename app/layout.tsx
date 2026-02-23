@@ -33,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} scroll-smooth dark`}>
+    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} dark`}>
       <ReactLenis root>
         <body className="antialiased selection:bg-blue-500/30 selection:text-white bg-black text-white overflow-x-hidden font-sans">
           <LoadingScreen />
