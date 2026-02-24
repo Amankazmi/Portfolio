@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, Loader2, Mail, Github, Linkedin, MapPin, Clock, CheckCircle2, ArrowUpRight, User, MessageSquare, Globe, Sparkles } from "lucide-react";
+import { Send, Loader2, Mail, Github, Linkedin, MapPin, Clock, CheckCircle2, ArrowUpRight, User, MessageSquare, Globe, Sparkles, Zap } from "lucide-react";
 import { AsciiArt } from "@/components/ui/ascii-art";
 import { PERSONAL_INFO } from "@/data/portfolio";
 
@@ -516,6 +516,49 @@ export default function Contact() {
                                         <div className="flex items-center gap-2 bg-white/[0.03] border border-white/5 px-3 py-1.5 rounded-lg w-full sm:w-auto">
                                             <Sparkles size={14} className="text-accent-purple animate-pulse shrink-0" />
                                             <p className="text-[11px] text-white/70 font-medium truncate">Building modern web apps</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+
+                        {/* ── Let's Build Together Bento ── */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.5, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                            className="relative group w-full"
+                        >
+                            {/* Hover Glow */}
+                            <div className="absolute inset-0 bg-gradient-to-r from-accent-blue/10 via-accent-purple/10 to-pink-500/10 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+
+                            <div className="relative rounded-2xl border border-white/10 bg-black/40 backdrop-blur-xl overflow-hidden w-full">
+                                {/* Diagonal subtle lines background */}
+                                <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: "repeating-linear-gradient(45deg, #fff 0, #fff 1px, transparent 0, transparent 50%)", backgroundSize: "10px 10px" }} />
+
+                                <div className="p-6 relative z-10">
+                                    <div className="flex items-start justify-between gap-4">
+                                        <div>
+                                            <p className="text-[10px] uppercase tracking-[0.2em] text-white/30 font-bold mb-2">Collaboration</p>
+                                            <h3 className="text-xl font-bold font-heading text-white tracking-tight">Let&apos;s build together</h3>
+                                            <p className="text-sm text-white/40 mt-1 leading-relaxed">Available for freelance opportunities and exciting full-stack projects.</p>
+                                        </div>
+                                        {/* Pulstating beacon */}
+                                        <div className="w-10 h-10 rounded-full border border-accent-blue/30 bg-accent-blue/10 flex items-center justify-center relative flex-shrink-0 group-hover:bg-accent-blue/20 transition-colors duration-500">
+                                            <Zap size={16} className="text-accent-blue group-hover:scale-110 transition-transform duration-500" />
+                                            <div className="absolute inset-0 rounded-full border border-accent-blue/40 animate-ping opacity-20" style={{ animationDuration: '3s' }} />
+                                        </div>
+                                    </div>
+
+                                    {/* Tech stack row */}
+                                    <div className="mt-6 pt-5 border-t border-white/5 flex items-center justify-between">
+                                        <div className="flex gap-2 flex-wrap">
+                                            {['React', 'Next.js', 'Tailwind', 'TypeScript'].map((tech) => (
+                                                <span key={tech} className="px-2.5 py-1 rounded-md bg-white/[0.03] border border-white/5 text-[10px] text-white/40 font-mono tracking-wide group-hover:border-white/10 group-hover:text-white/60 transition-colors duration-300">
+                                                    {tech}
+                                                </span>
+                                            ))}
                                         </div>
                                     </div>
                                 </div>
