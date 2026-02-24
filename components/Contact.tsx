@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, Loader2, Mail, Github, Linkedin, MapPin, Clock, CheckCircle2, ArrowUpRight } from "lucide-react";
+import { AsciiArt } from "@/components/ui/ascii-art";
 import { PERSONAL_INFO } from "@/data/portfolio";
 
 const CONTACT_ITEMS = [
@@ -159,13 +160,68 @@ export default function Contact() {
                             </div>
                         </div>
 
-                        {/* Decorative quote */}
-                        <div className="p-5 rounded-xl border border-white/6 bg-gradient-to-br from-accent-blue/5 to-accent-purple/5">
-                            <p className="text-white/30 text-sm italic leading-relaxed">
-                                &ldquo;Great things in business are never done by one person. They&apos;re done by a team of people.&rdquo;
-                            </p>
-                            <p className="text-white/20 text-xs mt-2">— Steve Jobs</p>
-                        </div>
+                        {/* ── Premium Terminal ASCII Card ── */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.4, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                            className="relative rounded-2xl overflow-hidden border border-white/10 bg-[#0a0a0f]"
+                        >
+                            {/* Outer gradient glow */}
+                            <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-br from-accent-blue/30 via-accent-purple/20 to-pink-500/10 -z-10" />
+
+                            {/* Terminal header bar */}
+                            <div className="flex items-center justify-between px-4 py-3 bg-white/[0.03] border-b border-white/8">
+                                <div className="flex items-center gap-1.5">
+                                    <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+                                    <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
+                                    <div className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
+                                </div>
+                                <span className="text-[10px] font-mono text-white/25 tracking-widest">~/aman-kazmi — zsh</span>
+                                <div className="w-12" />
+                            </div>
+
+                            {/* ASCII Art */}
+                            <div className="relative" style={{ height: "220px" }}>
+                                <AsciiArt
+                                    src="/ascii_art.jpeg"
+                                    resolution={90}
+                                    charset="dense"
+                                    colored={true}
+                                    backgroundColor="#0a0a0f"
+                                    inverted={true}
+                                    animated={false}
+                                    animationStyle="none"
+                                    objectFit="cover"
+                                    className="w-full h-full"
+                                />
+                                {/* Scan-line overlay */}
+                                <div
+                                    className="absolute inset-0 pointer-events-none opacity-20"
+                                    style={{
+                                        backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.4) 2px, rgba(0,0,0,0.4) 4px)",
+                                    }}
+                                />
+                                {/* Bottom shimmer fade */}
+                                <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#0a0a0f] to-transparent" />
+                            </div>
+
+                            {/* Terminal output lines */}
+                            <div className="px-4 pb-4 font-mono">
+                                <p className="text-[11px] text-accent-blue/80 mb-1">$ whoami</p>
+                                <p className="text-[11px] text-white/60 mb-2 pl-2">aman_kazmi <span className="text-white/25">// Full Stack Developer</span></p>
+                                <p className="text-[11px] text-accent-blue/80 mb-1">$ status</p>
+                                <p className="text-[11px] text-green-400/80 mb-3 pl-2 flex items-center gap-1.5">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse inline-block" />
+                                    open_to_opportunities=true
+                                </p>
+                                <p className="text-[11px] text-white/25 flex items-center gap-1">
+                                    <span className="text-accent-blue/60">▶</span>
+                                    <span className="animate-pulse">_</span>
+                                </p>
+                            </div>
+                        </motion.div>
                     </motion.div>
 
                     {/* RIGHT — Contact form */}

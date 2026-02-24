@@ -8,7 +8,6 @@ import { DottedGlowBackground } from "./ui/dotted-glow-background";
 import { ShaderGradient } from "./ui/shader-gradient";
 import { SmoothTyping } from "./ui/smooth-typing";
 import Link from "next/link";
-import { AsciiArt } from "./ui/ascii-art";
 import { ArrowDown, ArrowUpRight, Download, Github, Linkedin, Mail } from "lucide-react";
 
 const SOCIALS = [
@@ -75,47 +74,6 @@ export default function Hero() {
                     <FloatingBadge text="Tailwind" delay={1.3} xOffset={-5} />
                 </div>
             </div>
-
-            {/* ── ASCII Art floating panel (desktop only) ── */}
-            <motion.div
-                initial={{ opacity: 0, x: 60, filter: "blur(12px)" }}
-                animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-                transition={{ delay: 1.2, duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
-                className="hidden xl:block absolute right-8 2xl:right-16 top-1/2 -translate-y-1/2 z-10 pointer-events-none"
-            >
-                <div className="relative" style={{ width: "240px", height: "300px" }}>
-                    {/* Gradient border */}
-                    <div className="absolute -inset-[1.5px] rounded-2xl bg-gradient-to-br from-accent-blue/40 via-accent-purple/30 to-pink-500/20" />
-                    {/* Card */}
-                    <div className="relative rounded-2xl overflow-hidden border border-white/8 bg-black/40 backdrop-blur-sm w-full h-full">
-                        <AsciiArt
-                            src="/ascii_art.jpeg"
-                            resolution={80}
-                            charset="dense"
-                            colored={true}
-                            backgroundColor="transparent"
-                            inverted={true}
-                            animated={false}
-                            animationStyle="none"
-                            objectFit="cover"
-                            className="w-full h-full opacity-80"
-                        />
-                        {/* Bottom fade */}
-                        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black/70 to-transparent" />
-                        {/* Corner brackets */}
-                        <div className="absolute top-2 left-2 w-4 h-4 border-t border-l border-accent-blue/50" />
-                        <div className="absolute top-2 right-2 w-4 h-4 border-t border-r border-accent-purple/50" />
-                        <div className="absolute bottom-2 left-2 w-4 h-4 border-b border-l border-accent-blue/50" />
-                        <div className="absolute bottom-2 right-2 w-4 h-4 border-b border-r border-accent-purple/50" />
-                        {/* Label */}
-                        <div className="absolute bottom-3 left-0 right-0 flex justify-center">
-                            <span className="text-[9px] tracking-[0.2em] uppercase text-white/30 font-mono">ascii_render.exe</span>
-                        </div>
-                    </div>
-                    {/* Outer glow */}
-                    <div className="absolute -inset-4 rounded-3xl bg-accent-blue/5 blur-2xl -z-10" />
-                </div>
-            </motion.div>
 
             {/* ── Main content ── */}
             <motion.div
