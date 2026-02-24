@@ -232,69 +232,6 @@ export default function Contact() {
                             </div>
                         </motion.div>
 
-                        {/* ── Premium Social Cards ── */}
-                        <div className="flex flex-col gap-2 mt-4 lg:mt-6 w-full">
-                            <p className="text-[10px] uppercase tracking-[0.2em] text-white/25 font-bold mb-1">Connect with me</p>
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 w-full">
-                                {SOCIALS.map((s, i) => (
-                                    <motion.a
-                                        key={i}
-                                        href={s.href}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        aria-label={s.label}
-                                        initial={{ opacity: 0, y: 15 }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                        viewport={{ once: true }}
-                                        transition={{ delay: 0.5 + i * 0.08, duration: 0.4 }}
-                                        whileHover={{ y: -4 }}
-                                        whileTap={{ scale: 0.98 }}
-                                        className="group relative flex flex-col sm:flex-row md:flex-col lg:flex-row items-start sm:items-center md:items-start lg:items-center gap-4 p-4 rounded-xl border border-white/8 bg-white/[0.02] hover:border-opacity-40 transition-all duration-300 overflow-hidden cursor-pointer w-full"
-                                        style={{
-                                            "--card-glow": s.glow,
-                                            "--card-border": s.border,
-                                            "--card-bg": s.bg,
-                                        } as React.CSSProperties}
-                                        onMouseEnter={e => {
-                                            (e.currentTarget as HTMLElement).style.borderColor = s.border;
-                                            (e.currentTarget as HTMLElement).style.background = s.bg;
-                                            (e.currentTarget as HTMLElement).style.boxShadow = `0 0 20px ${s.glow}`;
-                                        }}
-                                        onMouseLeave={e => {
-                                            (e.currentTarget as HTMLElement).style.borderColor = "";
-                                            (e.currentTarget as HTMLElement).style.background = "";
-                                            (e.currentTarget as HTMLElement).style.boxShadow = "";
-                                        }}
-                                    >
-                                        {/* Platform icon */}
-                                        <div
-                                            className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 border transition-all duration-300"
-                                            style={{
-                                                backgroundColor: `${s.color}12`,
-                                                borderColor: `${s.color}25`,
-                                                color: s.color,
-                                            }}
-                                        >
-                                            {s.icon}
-                                        </div>
-
-                                        {/* Text */}
-                                        <div className="flex-1 min-w-0">
-                                            <p className="text-sm font-bold text-white/80 group-hover:text-white transition-colors">{s.label}</p>
-                                            <p className="text-[10px] text-white/30 truncate hidden xl:block md:hidden sm:block">{s.description}</p>
-                                        </div>
-
-                                        {/* Arrow indicator */}
-                                        <div className="flex items-center gap-2 shrink-0 md:hidden lg:block">
-                                            <ArrowUpRight
-                                                size={14}
-                                                className="text-white/20 group-hover:text-white/60 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                                            />
-                                        </div>
-                                    </motion.a>
-                                ))}
-                            </div>
-                        </div>
                     </motion.div>
 
                     {/* RIGHT COLUMN CONTAINER */}
@@ -559,7 +496,73 @@ export default function Contact() {
                             </div>
                         </motion.div>
                     </div>
+                </div>
 
+                {/* ── Premium Social Cards (Full Width) ── */}
+                <div className="mt-16 w-full max-w-7xl mx-auto flex flex-col gap-2 relative z-10">
+                    <p className="text-[10px] uppercase tracking-[0.2em] text-white/25 font-bold mb-1 pl-2">Social Profiles</p>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
+                        {SOCIALS.map((s, i) => (
+                            <motion.a
+                                key={i}
+                                href={s.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label={s.label}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.2 + i * 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                                whileHover={{ y: -4 }}
+                                whileTap={{ scale: 0.98 }}
+                                className="group relative flex items-center gap-5 p-5 rounded-2xl border border-white/8 bg-black/40 backdrop-blur-xl hover:border-opacity-40 transition-all duration-300 overflow-hidden cursor-pointer w-full"
+                                style={{
+                                    "--card-glow": s.glow,
+                                    "--card-border": s.border,
+                                    "--card-bg": s.bg,
+                                } as React.CSSProperties}
+                                onMouseEnter={e => {
+                                    (e.currentTarget as HTMLElement).style.borderColor = s.border;
+                                    (e.currentTarget as HTMLElement).style.background = s.bg;
+                                    (e.currentTarget as HTMLElement).style.boxShadow = `0 0 30px ${s.glow}`;
+                                }}
+                                onMouseLeave={e => {
+                                    (e.currentTarget as HTMLElement).style.borderColor = "";
+                                    (e.currentTarget as HTMLElement).style.background = "";
+                                    (e.currentTarget as HTMLElement).style.boxShadow = "";
+                                }}
+                            >
+                                {/* Platform icon with background glow */}
+                                <div
+                                    className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 border transition-all duration-300 relative overflow-hidden"
+                                    style={{
+                                        backgroundColor: `${s.color}10`,
+                                        borderColor: `${s.color}20`,
+                                        color: s.color,
+                                    }}
+                                >
+                                    <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                    {s.icon}
+                                </div>
+
+                                {/* Text content */}
+                                <div className="flex-1 min-w-0 flex flex-col justify-center">
+                                    <p className="text-base font-bold text-white/90 group-hover:text-white transition-colors">{s.label}</p>
+                                    <p className="text-xs text-white/40 group-hover:text-white/60 transition-colors truncate">{s.handle}</p>
+                                </div>
+
+                                {/* Arrow indicator */}
+                                <div className="flex items-center gap-2 shrink-0">
+                                    <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-white/5 transition-colors">
+                                        <ArrowUpRight
+                                            size={16}
+                                            className="text-white/30 group-hover:text-white transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                                        />
+                                    </div>
+                                </div>
+                            </motion.a>
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>
