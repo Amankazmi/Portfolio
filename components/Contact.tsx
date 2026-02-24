@@ -145,7 +145,7 @@ export default function Contact() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.4, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                            className="relative rounded-2xl overflow-hidden border border-white/10 bg-[#0a0a0f]"
+                            className="relative rounded-2xl overflow-hidden border border-white/10 bg-[#0a0a0f] max-w-xs"
                         >
                             {/* Outer gradient glow */}
                             <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-br from-accent-blue/30 via-accent-purple/20 to-pink-500/10 -z-10" />
@@ -162,7 +162,7 @@ export default function Contact() {
                             </div>
 
                             {/* ASCII Art */}
-                            <div className="relative" style={{ height: "220px" }}>
+                            <div className="relative" style={{ height: "300px" }}>
                                 <AsciiArt
                                     src="/ascii_art.jpeg"
                                     resolution={90}
