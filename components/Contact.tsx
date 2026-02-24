@@ -233,9 +233,9 @@ export default function Contact() {
                         </motion.div>
 
                         {/* ── Premium Social Cards ── */}
-                        <div className="flex flex-col gap-2">
+                        <div className="flex flex-col gap-2 mt-4 lg:mt-6 w-full">
                             <p className="text-[10px] uppercase tracking-[0.2em] text-white/25 font-bold mb-1">Connect with me</p>
-                            <div className="flex flex-col gap-2.5">
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 w-full">
                                 {SOCIALS.map((s, i) => (
                                     <motion.a
                                         key={i}
@@ -243,13 +243,13 @@ export default function Contact() {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         aria-label={s.label}
-                                        initial={{ opacity: 0, x: -15 }}
-                                        whileInView={{ opacity: 1, x: 0 }}
+                                        initial={{ opacity: 0, y: 15 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
                                         viewport={{ once: true }}
                                         transition={{ delay: 0.5 + i * 0.08, duration: 0.4 }}
-                                        whileHover={{ x: 4 }}
+                                        whileHover={{ y: -4 }}
                                         whileTap={{ scale: 0.98 }}
-                                        className="group relative flex items-center gap-4 p-4 rounded-xl border border-white/8 bg-white/[0.02] hover:border-opacity-40 transition-all duration-300 overflow-hidden cursor-pointer"
+                                        className="group relative flex flex-col sm:flex-row md:flex-col lg:flex-row items-start sm:items-center md:items-start lg:items-center gap-4 p-4 rounded-xl border border-white/8 bg-white/[0.02] hover:border-opacity-40 transition-all duration-300 overflow-hidden cursor-pointer w-full"
                                         style={{
                                             "--card-glow": s.glow,
                                             "--card-border": s.border,
@@ -281,17 +281,11 @@ export default function Contact() {
                                         {/* Text */}
                                         <div className="flex-1 min-w-0">
                                             <p className="text-sm font-bold text-white/80 group-hover:text-white transition-colors">{s.label}</p>
-                                            <p className="text-xs text-white/30 truncate">{s.description}</p>
+                                            <p className="text-[10px] text-white/30 truncate hidden xl:block md:hidden sm:block">{s.description}</p>
                                         </div>
 
-                                        {/* Handle + Arrow */}
-                                        <div className="flex items-center gap-2 shrink-0">
-                                            <span
-                                                className="text-[10px] font-mono px-2 py-0.5 rounded-md border hidden sm:block"
-                                                style={{ color: s.color, borderColor: `${s.color}25`, backgroundColor: `${s.color}08` }}
-                                            >
-                                                {s.handle}
-                                            </span>
+                                        {/* Arrow indicator */}
+                                        <div className="flex items-center gap-2 shrink-0 md:hidden lg:block">
                                             <ArrowUpRight
                                                 size={14}
                                                 className="text-white/20 group-hover:text-white/60 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
