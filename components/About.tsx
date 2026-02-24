@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { AnimatedCounter } from "./ui/animated-counter";
-import { AsciiArt } from "./ui/ascii-art";
+import Image from "next/image";
 import { GlowingEffect } from "./ui/glowing-effect";
 import {
     GraduationCap, Briefcase, TerminalSquare, Sparkles,
@@ -66,26 +66,57 @@ export default function About() {
                         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                         className="flex flex-col gap-8"
                     >
-                        {/* ASCII art with overlay gradient */}
-                        <div className="relative rounded-2xl overflow-hidden border border-white/10 group w-full max-w-sm mx-auto lg:mx-0" style={{ height: "min(380px, 60vw)" }}>
-                            <AsciiArt
-                                src="/ascii_art.jpeg"
-                                resolution={100}
-                                charset="dense"
-                                colored={true}
-                                backgroundColor="#09090b"
-                                inverted={true}
-                                animated={false}
-                                animationStyle="none"
-                                objectFit="contain"
-                                className="w-full h-full"
-                            />
-                            {/* Bottom fade */}
-                            <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-bg-primary to-transparent pointer-events-none" />
-                            {/* Name badge */}
-                            <div className="absolute bottom-4 left-4 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/60 border border-white/10 backdrop-blur-md">
-                                <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                                <span className="text-xs text-white/70 font-medium">Aman Kazmi · Available</span>
+                        {/* ── Premium Photo Card ── */}
+                        <div className="relative w-full max-w-sm mx-auto lg:mx-0">
+                            {/* Outer glow ring */}
+                            <div className="absolute -inset-[3px] rounded-3xl bg-gradient-to-br from-accent-blue via-accent-purple to-pink-500 opacity-60 blur-sm" />
+                            <div className="absolute -inset-[3px] rounded-3xl bg-gradient-to-br from-accent-blue via-accent-purple to-pink-500 opacity-30" />
+
+                            {/* Card */}
+                            <div className="relative rounded-3xl overflow-hidden border border-white/10 bg-[#09090b]" style={{ height: "min(420px, 72vw)" }}>
+                                {/* Photo */}
+                                <Image
+                                    src="/my_photo.jpg"
+                                    alt="Aman Kazmi"
+                                    fill
+                                    className="object-cover object-top"
+                                    priority
+                                />
+
+                                {/* Gradient overlays */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+                                <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent" />
+
+                                {/* Corner decorations */}
+                                <div className="absolute top-3 left-3 w-6 h-6 border-t-2 border-l-2 border-accent-blue/60 rounded-tl-lg" />
+                                <div className="absolute top-3 right-3 w-6 h-6 border-t-2 border-r-2 border-accent-purple/60 rounded-tr-lg" />
+
+                                {/* Floating tech badges */}
+                                <motion.div
+                                    initial={{ opacity: 0, x: 20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.6, duration: 0.5 }}
+                                    className="absolute top-4 right-4 flex flex-col gap-2"
+                                >
+                                    {["Next.js", "React", "Node.js"].map((tech) => (
+                                        <span key={tech} className="px-2.5 py-1 text-[10px] font-semibold rounded-full bg-black/60 border border-white/15 text-white/70 backdrop-blur-md">
+                                            {tech}
+                                        </span>
+                                    ))}
+                                </motion.div>
+
+                                {/* Name + status badge */}
+                                <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between">
+                                    <div>
+                                        <p className="text-white font-black font-heading text-lg tracking-tight leading-tight">Aman Kazmi</p>
+                                        <p className="text-white/50 text-xs font-medium">Full Stack Developer</p>
+                                    </div>
+                                    <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-green-500/20 border border-green-500/30 backdrop-blur-md">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                                        <span className="text-[10px] text-green-400 font-semibold">Available</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
