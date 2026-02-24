@@ -138,27 +138,6 @@ export default function Contact() {
                             </div>
                         </div>
 
-                        {/* Social links */}
-                        <div>
-                            <p className="text-[10px] uppercase tracking-widest text-white/25 font-semibold mb-4">Find me on</p>
-                            <div className="flex gap-3">
-                                {SOCIALS.map((s, i) => (
-                                    <motion.a
-                                        key={i}
-                                        href={s.href}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        aria-label={s.label}
-                                        whileHover={{ scale: 1.1, y: -2 }}
-                                        whileTap={{ scale: 0.95 }}
-                                        className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-white/10 bg-white/[0.03] text-white/40 hover:text-white hover:border-white/25 hover:bg-white/[0.07] transition-all duration-300 text-sm"
-                                    >
-                                        {s.icon}
-                                        <span>{s.label}</span>
-                                    </motion.a>
-                                ))}
-                            </div>
-                        </div>
 
                         {/* ── Premium Terminal ASCII Card ── */}
                         <motion.div
@@ -222,6 +201,28 @@ export default function Contact() {
                                 </p>
                             </div>
                         </motion.div>
+
+                        {/* Social links */}
+                        <div>
+                            <p className="text-[10px] uppercase tracking-widest text-white/25 font-semibold mb-4">Find me on</p>
+                            <div className="flex gap-3 flex-wrap">
+                                {SOCIALS.map((s, i) => (
+                                    <motion.a
+                                        key={i}
+                                        href={s.href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        aria-label={s.label}
+                                        whileHover={{ scale: 1.1, y: -2 }}
+                                        whileTap={{ scale: 0.95 }}
+                                        className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-white/10 bg-white/[0.03] text-white/40 hover:text-white hover:border-white/25 hover:bg-white/[0.07] transition-all duration-300 text-sm"
+                                    >
+                                        {s.icon}
+                                        <span>{s.label}</span>
+                                    </motion.a>
+                                ))}
+                            </div>
+                        </div>
                     </motion.div>
 
                     {/* RIGHT — Contact form */}
