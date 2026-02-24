@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 
 const NAV_LINKS = [
@@ -59,17 +60,49 @@ export default function Navbar() {
             >
                 <nav
                     className={`pointer-events-auto flex items-center gap-1 px-3 py-2 rounded-2xl border transition-all duration-500 ${scrolled
-                            ? "bg-black/80 border-white/10 backdrop-blur-2xl shadow-[0_8px_40px_rgba(0,0,0,0.6)]"
-                            : "bg-black/30 border-white/5 backdrop-blur-xl"
+                        ? "bg-black/80 border-white/10 backdrop-blur-2xl shadow-[0_8px_40px_rgba(0,0,0,0.6)]"
+                        : "bg-black/30 border-white/5 backdrop-blur-xl"
                         }`}
                 >
-                    {/* Logo */}
+                    {/* Logo — Photo Avatar */}
                     <Link
                         href="/"
-                        className="mr-3 flex items-center gap-0.5 px-2 py-1.5 rounded-xl hover:bg-white/5 transition-colors"
+                        className="mr-2 flex items-center gap-2.5 px-1.5 py-1.5 rounded-xl hover:bg-white/5 transition-colors group"
                     >
-                        <span className="text-lg font-black font-heading text-white tracking-tighter">AK</span>
-                        <span className="text-lg font-black font-heading text-accent-blue">.</span>
+                        {/* Avatar with spinning gradient ring */}
+                        <div className="relative shrink-0">
+                            {/* Spinning gradient ring */}
+                            <motion.div
+                                animate={{ rotate: 360 }}
+                                transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
+                                className="absolute -inset-[2px] rounded-full"
+                                style={{
+                                    background: "conic-gradient(from 0deg, #3b82f6, #8b5cf6, #ec4899, #3b82f6)",
+                                }}
+                            />
+                            {/* Glow */}
+                            <div className="absolute -inset-[2px] rounded-full blur-sm opacity-60"
+                                style={{ background: "conic-gradient(from 0deg, #3b82f6, #8b5cf6, #ec4899, #3b82f6)" }}
+                            />
+                            {/* Photo */}
+                            <div className="relative w-8 h-8 rounded-full overflow-hidden border-[1.5px] border-black z-10">
+                                <Image
+                                    src="/ascii_art.jpeg"
+                                    alt="Aman Kazmi"
+                                    fill
+                                    className="object-cover object-top"
+                                    priority
+                                />
+                            </div>
+                        </div>
+                        {/* Name + status — visible on md+ */}
+                        <div className="hidden md:flex flex-col leading-tight">
+                            <span className="text-[13px] font-bold text-white tracking-tight font-heading">Aman Kazmi</span>
+                            <span className="flex items-center gap-1 text-[9px] text-white/35 font-medium uppercase tracking-[0.1em]">
+                                <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                                Available
+                            </span>
+                        </div>
                     </Link>
 
                     {/* Separator */}
@@ -84,8 +117,8 @@ export default function Navbar() {
                                     key={link.name}
                                     href={link.href}
                                     className={`relative flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold transition-all duration-300 ${isActive
-                                            ? "text-white bg-white/8"
-                                            : "text-white/40 hover:text-white hover:bg-white/5"
+                                        ? "text-white bg-white/8"
+                                        : "text-white/40 hover:text-white hover:bg-white/5"
                                         }`}
                                 >
                                     {isActive && (
@@ -151,9 +184,26 @@ export default function Navbar() {
                         >
                             {/* Drawer header */}
                             <div className="flex items-center justify-between px-6 py-5 border-b border-white/6">
-                                <div className="flex items-center gap-1">
-                                    <span className="text-xl font-black font-heading text-white">AK</span>
-                                    <span className="text-xl font-black font-heading text-accent-blue">.</span>
+                                <div className="flex items-center gap-2.5">
+                                    {/* Avatar */}
+                                    <div className="relative shrink-0">
+                                        <motion.div
+                                            animate={{ rotate: 360 }}
+                                            transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
+                                            className="absolute -inset-[2px] rounded-full"
+                                            style={{ background: "conic-gradient(from 0deg, #3b82f6, #8b5cf6, #ec4899, #3b82f6)" }}
+                                        />
+                                        <div className="relative w-8 h-8 rounded-full overflow-hidden border-[1.5px] border-black z-10">
+                                            <Image src="/ascii_art.jpeg" alt="Aman Kazmi" fill className="object-cover object-top" />
+                                        </div>
+                                    </div>
+                                    <div className="flex flex-col leading-tight">
+                                        <span className="text-[13px] font-bold text-white tracking-tight font-heading">Aman Kazmi</span>
+                                        <span className="flex items-center gap-1 text-[9px] text-white/35 font-medium uppercase tracking-[0.1em]">
+                                            <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                                            Available
+                                        </span>
+                                    </div>
                                 </div>
                                 <motion.button
                                     whileTap={{ scale: 0.9 }}
@@ -177,8 +227,8 @@ export default function Navbar() {
                                             transition={{ delay: 0.05 + i * 0.045 }}
                                             onClick={() => setMobileOpen(false)}
                                             className={`flex items-center justify-between px-4 py-3 rounded-xl text-sm font-medium transition-all ${isActive
-                                                    ? "text-white bg-white/8 border border-white/10"
-                                                    : "text-white/40 hover:text-white hover:bg-white/5"
+                                                ? "text-white bg-white/8 border border-white/10"
+                                                : "text-white/40 hover:text-white hover:bg-white/5"
                                                 }`}
                                         >
                                             {link.name}
