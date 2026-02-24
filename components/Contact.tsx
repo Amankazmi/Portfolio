@@ -29,9 +29,39 @@ const CONTACT_ITEMS = [
 ];
 
 const SOCIALS = [
-    { icon: <Github size={16} />, label: "GitHub", href: PERSONAL_INFO.github },
-    { icon: <Linkedin size={16} />, label: "LinkedIn", href: PERSONAL_INFO.linkedin },
-    { icon: <Mail size={16} />, label: "Email", href: `mailto:${PERSONAL_INFO.email}` },
+    {
+        icon: <Github size={20} />,
+        label: "GitHub",
+        handle: "@Amankazmi",
+        description: "Open source & projects",
+        href: PERSONAL_INFO.github,
+        color: "#e2e8f0",
+        glow: "rgba(226,232,240,0.15)",
+        border: "rgba(226,232,240,0.2)",
+        bg: "rgba(226,232,240,0.05)",
+    },
+    {
+        icon: <Linkedin size={20} />,
+        label: "LinkedIn",
+        handle: "aman-kazmi",
+        description: "Professional network",
+        href: PERSONAL_INFO.linkedin,
+        color: "#0ea5e9",
+        glow: "rgba(14,165,233,0.2)",
+        border: "rgba(14,165,233,0.3)",
+        bg: "rgba(14,165,233,0.06)",
+    },
+    {
+        icon: <Mail size={20} />,
+        label: "Email",
+        handle: "amankazmi257",
+        description: "Drop me a message",
+        href: `mailto:${PERSONAL_INFO.email}`,
+        color: "#a855f7",
+        glow: "rgba(168,85,247,0.2)",
+        border: "rgba(168,85,247,0.3)",
+        bg: "rgba(168,85,247,0.06)",
+    },
 ];
 
 type FieldId = "name" | "email" | "message";
@@ -202,10 +232,10 @@ export default function Contact() {
                             </div>
                         </motion.div>
 
-                        {/* Social links */}
-                        <div>
-                            <p className="text-[10px] uppercase tracking-widest text-white/25 font-semibold mb-4">Find me on</p>
-                            <div className="flex gap-3 flex-wrap">
+                        {/* ── Premium Social Cards ── */}
+                        <div className="flex flex-col gap-2">
+                            <p className="text-[10px] uppercase tracking-[0.2em] text-white/25 font-bold mb-1">Connect with me</p>
+                            <div className="flex flex-col gap-2.5">
                                 {SOCIALS.map((s, i) => (
                                     <motion.a
                                         key={i}
@@ -213,12 +243,60 @@ export default function Contact() {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         aria-label={s.label}
-                                        whileHover={{ scale: 1.1, y: -2 }}
-                                        whileTap={{ scale: 0.95 }}
-                                        className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-white/10 bg-white/[0.03] text-white/40 hover:text-white hover:border-white/25 hover:bg-white/[0.07] transition-all duration-300 text-sm"
+                                        initial={{ opacity: 0, x: -15 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: 0.5 + i * 0.08, duration: 0.4 }}
+                                        whileHover={{ x: 4 }}
+                                        whileTap={{ scale: 0.98 }}
+                                        className="group relative flex items-center gap-4 p-4 rounded-xl border border-white/8 bg-white/[0.02] hover:border-opacity-40 transition-all duration-300 overflow-hidden cursor-pointer"
+                                        style={{
+                                            "--card-glow": s.glow,
+                                            "--card-border": s.border,
+                                            "--card-bg": s.bg,
+                                        } as React.CSSProperties}
+                                        onMouseEnter={e => {
+                                            (e.currentTarget as HTMLElement).style.borderColor = s.border;
+                                            (e.currentTarget as HTMLElement).style.background = s.bg;
+                                            (e.currentTarget as HTMLElement).style.boxShadow = `0 0 20px ${s.glow}`;
+                                        }}
+                                        onMouseLeave={e => {
+                                            (e.currentTarget as HTMLElement).style.borderColor = "";
+                                            (e.currentTarget as HTMLElement).style.background = "";
+                                            (e.currentTarget as HTMLElement).style.boxShadow = "";
+                                        }}
                                     >
-                                        {s.icon}
-                                        <span>{s.label}</span>
+                                        {/* Platform icon */}
+                                        <div
+                                            className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 border transition-all duration-300"
+                                            style={{
+                                                backgroundColor: `${s.color}12`,
+                                                borderColor: `${s.color}25`,
+                                                color: s.color,
+                                            }}
+                                        >
+                                            {s.icon}
+                                        </div>
+
+                                        {/* Text */}
+                                        <div className="flex-1 min-w-0">
+                                            <p className="text-sm font-bold text-white/80 group-hover:text-white transition-colors">{s.label}</p>
+                                            <p className="text-xs text-white/30 truncate">{s.description}</p>
+                                        </div>
+
+                                        {/* Handle + Arrow */}
+                                        <div className="flex items-center gap-2 shrink-0">
+                                            <span
+                                                className="text-[10px] font-mono px-2 py-0.5 rounded-md border hidden sm:block"
+                                                style={{ color: s.color, borderColor: `${s.color}25`, backgroundColor: `${s.color}08` }}
+                                            >
+                                                {s.handle}
+                                            </span>
+                                            <ArrowUpRight
+                                                size={14}
+                                                className="text-white/20 group-hover:text-white/60 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                                            />
+                                        </div>
                                     </motion.a>
                                 ))}
                             </div>
@@ -296,8 +374,8 @@ export default function Contact() {
                                                     <label className={`text-[10px] font-bold uppercase tracking-[0.18em] transition-colors duration-300 ${focusedField === "name" ? "text-accent-blue" : "text-white/25"
                                                         }`}>Your Name</label>
                                                     <div className={`flex items-center gap-3 px-4 py-3 rounded-xl border bg-white/[0.03] transition-all duration-300 ${focusedField === "name"
-                                                            ? "border-accent-blue/50 shadow-[0_0_0_3px_rgba(59,130,246,0.1)] bg-white/[0.05]"
-                                                            : "border-white/8 hover:border-white/15"
+                                                        ? "border-accent-blue/50 shadow-[0_0_0_3px_rgba(59,130,246,0.1)] bg-white/[0.05]"
+                                                        : "border-white/8 hover:border-white/15"
                                                         }`}>
                                                         <User size={14} className={`shrink-0 transition-colors duration-300 ${focusedField === "name" ? "text-accent-blue" : "text-white/20"
                                                             }`} />
@@ -317,8 +395,8 @@ export default function Contact() {
                                                     <label className={`text-[10px] font-bold uppercase tracking-[0.18em] transition-colors duration-300 ${focusedField === "email" ? "text-accent-blue" : "text-white/25"
                                                         }`}>Email Address</label>
                                                     <div className={`flex items-center gap-3 px-4 py-3 rounded-xl border bg-white/[0.03] transition-all duration-300 ${focusedField === "email"
-                                                            ? "border-accent-blue/50 shadow-[0_0_0_3px_rgba(59,130,246,0.1)] bg-white/[0.05]"
-                                                            : "border-white/8 hover:border-white/15"
+                                                        ? "border-accent-blue/50 shadow-[0_0_0_3px_rgba(59,130,246,0.1)] bg-white/[0.05]"
+                                                        : "border-white/8 hover:border-white/15"
                                                         }`}>
                                                         <Mail size={14} className={`shrink-0 transition-colors duration-300 ${focusedField === "email" ? "text-accent-blue" : "text-white/20"
                                                             }`} />
@@ -342,8 +420,8 @@ export default function Contact() {
                                                     <span className="text-[10px] text-white/20 font-mono">markdown supported</span>
                                                 </div>
                                                 <div className={`flex gap-3 px-4 py-3 rounded-xl border bg-white/[0.03] transition-all duration-300 ${focusedField === "message"
-                                                        ? "border-accent-blue/50 shadow-[0_0_0_3px_rgba(59,130,246,0.1)] bg-white/[0.05]"
-                                                        : "border-white/8 hover:border-white/15"
+                                                    ? "border-accent-blue/50 shadow-[0_0_0_3px_rgba(59,130,246,0.1)] bg-white/[0.05]"
+                                                    : "border-white/8 hover:border-white/15"
                                                     }`}>
                                                     <MessageSquare size={14} className={`shrink-0 mt-0.5 transition-colors duration-300 ${focusedField === "message" ? "text-accent-blue" : "text-white/20"
                                                         }`} />
