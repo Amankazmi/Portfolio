@@ -172,7 +172,7 @@ export default function Contact() {
                                     inverted={true}
                                     animated={false}
                                     animationStyle="none"
-                                    objectFit="cover"
+                                    objectFit="contain"
                                     className="w-full h-full"
                                 />
                                 {/* Scan-line overlay */}
