@@ -54,6 +54,7 @@ const PREMIUM_PROJECTS = [
         accent: "#f59e0b",
         gradient: "from-amber-600/30 via-orange-500/10 to-transparent",
         featured: false,
+        hideSource: true,
     },
     {
         id: "redhawk",
@@ -66,6 +67,7 @@ const PREMIUM_PROJECTS = [
         accent: "#94a3b8",
         gradient: "from-slate-600/30 via-zinc-500/10 to-transparent",
         featured: false,
+        hideSource: true,
     }
 ];
 
@@ -209,14 +211,16 @@ function ProjectCard({ project, large = false }: { project: typeof PREMIUM_PROJE
                                 Live Preview <ExternalLink size={14} />
                             </motion.button>
                         </a>
-                        <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex-1">
-                            <motion.button
-                                whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}
-                                className="w-full py-3 rounded-xl border border-white/10 text-sm text-white font-bold flex items-center justify-center gap-2 hover:bg-white/5 transition-colors"
-                            >
-                                Source Code <Github size={14} />
-                            </motion.button>
-                        </a>
+                        {!project.hideSource && (
+                            <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex-1">
+                                <motion.button
+                                    whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}
+                                    className="w-full py-3 rounded-xl border border-white/10 text-sm text-white font-bold flex items-center justify-center gap-2 hover:bg-white/5 transition-colors"
+                                >
+                                    Source Code <Github size={14} />
+                                </motion.button>
+                            </a>
+                        )}
                     </div>
                 </div>
             </DialogContent>
