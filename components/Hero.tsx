@@ -78,16 +78,16 @@ export default function Hero() {
             {/* ── Main content ── */}
             <motion.div
                 style={{ y: yText, opacity }}
-                className="relative z-20 flex flex-col items-center gap-5 px-6 max-w-5xl mx-auto text-center pt-24"
+                className="relative z-20 flex flex-col items-center gap-4 px-4 sm:px-6 max-w-5xl mx-auto text-center pt-24 w-full"
             >
                 {/* Eyebrow with animated typing indicator */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2, duration: 0.7 }}
-                    className="flex items-center gap-3"
+                    className="flex flex-wrap items-center justify-center gap-2 sm:gap-3"
                 >
-                    <span className="flex items-center gap-1.5 px-3 py-1 rounded-full border border-accent-blue/30 bg-accent-blue/10 text-accent-blue text-xs font-semibold tracking-[0.2em] uppercase">
+                    <span className="flex items-center gap-1.5 px-3 py-1 rounded-full border border-accent-blue/30 bg-accent-blue/10 text-accent-blue text-[11px] sm:text-xs font-semibold tracking-[0.15em] sm:tracking-[0.2em] uppercase">
                         <span className="w-1.5 h-1.5 rounded-full bg-accent-blue animate-pulse" />
                         Available for hire
                     </span>
@@ -102,7 +102,7 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 30, filter: "blur(12px)" }}
                     animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                     transition={{ delay: 0.35, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-                    className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black font-heading tracking-tighter leading-[0.95] text-white"
+                    className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black font-heading tracking-tighter leading-[0.95] text-white"
                 >
                     <SmoothTyping text="Hi, I'm Aman Kazmi." delay={0.5} speed={0.055} />
                 </motion.div>
@@ -112,7 +112,7 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 16 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.55, duration: 0.7 }}
-                    className="text-lg sm:text-xl md:text-2xl font-light text-white/50 tracking-wide"
+                    className="text-base sm:text-lg md:text-xl font-light text-white/50 tracking-wide"
                 >
                     <TypewriterEffect
                         words={[
@@ -129,7 +129,7 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.7, duration: 0.7 }}
-                    className="max-w-lg text-sm text-white/30 leading-relaxed"
+                    className="max-w-md text-xs sm:text-sm text-white/30 leading-relaxed px-2 sm:px-0"
                 >
                     Building scalable, performant, and visually rich web applications — from pixel-perfect UIs to robust backend systems.
                 </motion.p>

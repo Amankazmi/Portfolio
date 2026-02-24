@@ -52,7 +52,7 @@ export default function Skills() {
         : SKILLS;
 
     return (
-        <section id="skills" className="py-32 relative overflow-hidden bg-bg-primary">
+        <section id="skills" className="py-20 md:py-32 relative overflow-hidden bg-bg-primary">
             <div className="shader-grain" />
 
             {/* Blobs */}

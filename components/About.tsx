@@ -50,13 +50,13 @@ const TRAITS = ["Problem Solver", "Clean Code Advocate", "UI Perfectionist", "Fa
 
 export default function About() {
     return (
-        <section id="about" className="py-32 relative overflow-hidden bg-bg-primary">
+        <section id="about" className="py-20 md:py-32 relative overflow-hidden bg-bg-primary">
             {/* Ambient blobs */}
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent-blue/6 blur-[160px] rounded-full pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent-purple/6 blur-[140px] rounded-full pointer-events-none" />
 
             <div className="container mx-auto px-6 max-w-7xl relative z-10">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 xl:gap-24 items-start">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 xl:gap-24 items-start">
 
                     {/* ── LEFT COLUMN ── */}
                     <motion.div
@@ -67,7 +67,7 @@ export default function About() {
                         className="flex flex-col gap-8"
                     >
                         {/* ASCII art with overlay gradient */}
-                        <div className="relative rounded-2xl overflow-hidden border border-white/10 group max-w-sm" style={{ height: "380px" }}>
+                        <div className="relative rounded-2xl overflow-hidden border border-white/10 group w-full max-w-sm mx-auto lg:mx-0" style={{ height: "min(380px, 60vw)" }}>
                             <AsciiArt
                                 src="/ascii_art.jpeg"
                                 resolution={100}

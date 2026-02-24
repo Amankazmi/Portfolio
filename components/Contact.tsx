@@ -52,7 +52,7 @@ export default function Contact() {
     const inputBase = "w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm placeholder-white/20 focus:outline-none focus:border-accent-blue/60 focus:bg-white/[0.05] transition-all duration-300";
 
     return (
-        <section id="contact" className="py-32 relative bg-bg-primary overflow-hidden">
+        <section id="contact" className="py-20 md:py-32 relative bg-bg-primary overflow-hidden">
 
             {/* Ambient glows */}
             <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent-blue/8 blur-[140px] rounded-full pointer-events-none" />
@@ -66,7 +66,7 @@ export default function Contact() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 0.6 }}
-                    className="text-center mb-20"
+                    className="text-center mb-12 md:mb-20"
                 >
                     <p className="text-sm tracking-[0.3em] uppercase text-accent-blue font-semibold mb-3">Get In Touch</p>
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-black font-heading text-white tracking-tighter">
