@@ -4,6 +4,7 @@ export interface Project {
   description: string;
   tech: string[];
   github: string;
+  live?: string;
   period: string;
   featured?: boolean;
 }
@@ -13,7 +14,7 @@ export interface Experience {
   role: string;
   period: string;
   status?: string;
-  type?: string; 
+  type?: string;
   description: string;
   goals: string[];
   features: string[];

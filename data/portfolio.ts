@@ -19,6 +19,7 @@ export const PROJECTS: Project[] = [
         description: "Full-stack job platform with Clerk auth + Supabase backend. Role-based workflows for recruiters & candidates: job posting, application tracking, resume uploads, hiring status, protected routes.",
         tech: ["React", "Supabase", "Clerk", "TypeScript"],
         github: "https://github.com/Amankazmi/Hirrd",
+        live: "https://hirrd-steel.vercel.app/",
         featured: true,
     },
     {
