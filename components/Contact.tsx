@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import emailjs from "@emailjs/browser";
 import { Send, Loader2, Mail, Github, Linkedin, MapPin, Clock, CheckCircle2, ArrowUpRight, User, MessageSquare, Globe, Sparkles, Zap } from "lucide-react";
 import { AsciiArt } from "@/components/ui/ascii-art";
 import { PERSONAL_INFO } from "@/data/portfolio";
@@ -67,17 +68,31 @@ const SOCIALS = [
 type FieldId = "name" | "email" | "message";
 
 export default function Contact() {
+    const formRef = useRef<HTMLFormElement>(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitted, setSubmitted] = useState(false);
+    const [error, setError] = useState<string | null>(null);
     const [focusedField, setFocusedField] = useState<FieldId | null>(null);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        if (!formRef.current) return;
         setIsSubmitting(true);
-        setTimeout(() => {
-            setIsSubmitting(false);
+        setError(null);
+        try {
+            await emailjs.sendForm(
+                process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+                process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+                formRef.current,
+                process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+            );
             setSubmitted(true);
-        }, 1800);
+        } catch (err) {
+            console.error("EmailJS error:", err);
+            setError("Something went wrong. Please try emailing me directly.");
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const inputBase = "w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm placeholder-white/20 focus:outline-none focus:border-accent-blue/60 focus:bg-white/[0.05] transition-all duration-300";
@@ -287,6 +302,7 @@ export default function Contact() {
                                         ) : (
                                             <motion.form
                                                 key="form"
+                                                ref={formRef}
                                                 onSubmit={handleSubmit}
                                                 className="flex flex-col gap-6"
                                                 initial={{ opacity: 1 }}
@@ -314,6 +330,7 @@ export default function Contact() {
                                                                 }`} />
                                                             <input
                                                                 type="text"
+                                                                name="user_name"
                                                                 required
                                                                 placeholder="Aman Kazmi"
                                                                 onFocus={() => setFocusedField("name")}
@@ -335,6 +352,7 @@ export default function Contact() {
                                                                 }`} />
                                                             <input
                                                                 type="email"
+                                                                name="user_email"
                                                                 required
                                                                 placeholder="hello@example.com"
                                                                 onFocus={() => setFocusedField("email")}
@@ -359,6 +377,7 @@ export default function Contact() {
                                                         <MessageSquare size={14} className={`shrink-0 mt-0.5 transition-colors duration-300 ${focusedField === "message" ? "text-accent-blue" : "text-white/20"
                                                             }`} />
                                                         <textarea
+                                                            name="message"
                                                             required
                                                             rows={5}
                                                             placeholder="Tell me about your project, idea, or just say hi..."
@@ -391,6 +410,17 @@ export default function Contact() {
                                                         </>
                                                     )}
                                                 </motion.button>
+
+                                                {/* Error banner */}
+                                                {error && (
+                                                    <motion.p
+                                                        initial={{ opacity: 0, y: -6 }}
+                                                        animate={{ opacity: 1, y: 0 }}
+                                                        className="text-center text-xs text-red-400 bg-red-500/10 border border-red-500/20 rounded-lg py-2 px-4 -mt-2"
+                                                    >
+                                                        {error}
+                                                    </motion.p>
+                                                )}
 
                                                 {/* Privacy note */}
                                                 <p className="text-center text-[10px] text-white/20 -mt-2">
