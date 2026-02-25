@@ -96,8 +96,6 @@ export default function Contact() {
         }
     };
 
-    const inputBase = "w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm placeholder-white/20 focus:outline-none focus:border-accent-blue/60 focus:bg-white/[0.05] transition-all duration-300";
-
     return (
         <section id="contact" className="py-20 md:py-32 relative bg-bg-primary overflow-hidden">
 

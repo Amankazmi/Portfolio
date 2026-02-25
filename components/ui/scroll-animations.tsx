@@ -82,13 +82,13 @@ export const staggerChild = {
 // Drop-in <ScrollReveal> wrapper for any element — triggers once on scroll
 interface ScrollRevealProps {
     children: React.ReactNode;
-    variants?: { hidden: Variant; visible: Variant | ((custom: number) => Variant) };
+    variants?: any;
     className?: string;
     custom?: number;
     delay?: number;
     once?: boolean;
     amount?: number;
-    as?: keyof JSX.IntrinsicElements;
+    as?: any;
 }
 
 export function ScrollReveal({
