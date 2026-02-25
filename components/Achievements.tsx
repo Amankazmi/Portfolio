@@ -31,7 +31,7 @@ const CARD_CONFIG = [
 
 export default function Achievements() {
     return (
-        <section id="achievements" className="py-32 relative bg-bg-primary overflow-hidden">
+        <section id="achievements" className="py-32 relative bg-bg-primary overflow-hidden section-fade-edge">
 
             {/* Ambient glow */}
             <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-48 bg-amber-500/5 blur-[120px] rounded-full pointer-events-none" />

@@ -50,7 +50,7 @@ const TRAITS = ["Problem Solver", "Clean Code Advocate", "UI Perfectionist", "Fa
 
 export default function About() {
     return (
-        <section id="about" className="py-20 md:py-32 relative overflow-hidden bg-bg-primary">
+        <section id="about" className="py-20 md:py-32 relative overflow-hidden bg-bg-primary section-fade-edge">
             {/* Ambient blobs */}
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent-blue/6 blur-[160px] rounded-full pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent-purple/6 blur-[140px] rounded-full pointer-events-none" />

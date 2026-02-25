@@ -80,7 +80,7 @@ export default function Experience() {
     const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
     return (
-        <section id="experience" className="py-20 md:py-32 relative bg-bg-primary overflow-hidden">
+        <section id="experience" className="py-20 md:py-32 relative bg-bg-primary overflow-hidden section-fade-edge">
             {/* Background Orbs */}
             <div className="absolute top-1/4 left-0 w-96 h-96 bg-accent-blue/5 blur-[130px] rounded-full pointer-events-none" />
             <div className="absolute bottom-1/4 right-0 w-80 h-80 bg-accent-purple/5 blur-[120px] rounded-full pointer-events-none" />

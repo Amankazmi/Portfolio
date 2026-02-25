@@ -273,3 +273,212 @@
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
 }
+
+/* ──────────────────────────────────────────────────────────────
+   SCROLL-DRIVEN ANIMATION UTILITIES
+   Usage: Add class like `scroll-reveal` to any element.
+   The animation fires once as the element enters the viewport.
+────────────────────────────────────────────────────────────── */
+
+@keyframes fadeUpIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+    filter: blur(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0px);
+  }
+}
+
+@keyframes fadeInOnly {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+    filter: blur(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0px);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+    filter: blur(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0px);
+  }
+}
+
+@keyframes scaleReveal {
+  from {
+    opacity: 0;
+    transform: scale(0.88);
+    filter: blur(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0px);
+  }
+}
+
+/* Section separator animated line */
+@keyframes lineGrow {
+  from {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  to {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+/* Heading char stagger */
+@keyframes charReveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px) rotateX(-30deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg);
+  }
+}
+
+/* ── Utility classes ── */
+.animate-fade-up {
+  animation: fadeUpIn 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-fade-in {
+  animation: fadeInOnly 0.6s ease both;
+}
+
+.animate-slide-left {
+  animation: slideInFromLeft 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-slide-right {
+  animation: slideInFromRight 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-scale-reveal {
+  animation: scaleReveal 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Add view-timeline so elements animate on first scroll-into-view */
+.scroll-reveal {
+  animation: fadeUpIn 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 35%;
+}
+
+.scroll-reveal-left {
+  animation: slideInFromLeft 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 35%;
+}
+
+.scroll-reveal-right {
+  animation: slideInFromRight 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 35%;
+}
+
+.scroll-reveal-scale {
+  animation: scaleReveal 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 35%;
+}
+
+.scroll-reveal-fade {
+  animation: fadeInOnly 0.8s ease both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 40%;
+}
+
+/* Stagger delays for grid children */
+.stagger-children>*:nth-child(1) {
+  animation-delay: 0ms;
+}
+
+.stagger-children>*:nth-child(2) {
+  animation-delay: 80ms;
+}
+
+.stagger-children>*:nth-child(3) {
+  animation-delay: 160ms;
+}
+
+.stagger-children>*:nth-child(4) {
+  animation-delay: 240ms;
+}
+
+.stagger-children>*:nth-child(5) {
+  animation-delay: 320ms;
+}
+
+.stagger-children>*:nth-child(6) {
+  animation-delay: 400ms;
+}
+
+/* Section accent line grow */
+.animate-line-grow {
+  animation: lineGrow 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 30%;
+}
+
+/* Smooth section transition: subtle gradient overlay that fades between sections */
+.section-fade-edge::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to bottom, var(--bg-primary), transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.section-fade-edge::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to top, var(--bg-primary), transparent);
+  pointer-events: none;
+  z-index: 1;
+}

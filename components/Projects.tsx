@@ -233,7 +233,7 @@ export default function Projects() {
     const rest = PREMIUM_PROJECTS.filter(p => !p.featured);
 
     return (
-        <section id="projects" className="py-20 md:py-32 relative overflow-hidden bg-bg-primary">
+        <section id="projects" className="py-20 md:py-32 relative overflow-hidden bg-bg-primary section-fade-edge">
             <div className="container mx-auto px-6 max-w-7xl relative z-10">
 
                 {/* Section header */}

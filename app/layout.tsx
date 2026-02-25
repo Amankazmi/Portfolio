@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
+import BackToTop from "@/components/BackToTop";
+import { ReactLenis } from "@/lib/lenis";
+import { LoadingScreen } from "@/components/ui/loading-screen";
+import { ScrollProgressBar } from "@/components/ui/scroll-progress";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -22,11 +27,6 @@ export const metadata: Metadata = {
   },
 };
 
-import Navbar from "@/components/Navbar";
-import BackToTop from "@/components/BackToTop";
-import { ReactLenis } from "@/lib/lenis"; // We need to create a wrapper for Lenis
-import { LoadingScreen } from "@/components/ui/loading-screen";
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -36,6 +36,7 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} dark`}>
       <ReactLenis root>
         <body className="antialiased selection:bg-blue-500/30 selection:text-white bg-black text-white overflow-x-hidden font-sans">
+          <ScrollProgressBar />
           <LoadingScreen />
           <Navbar />
           {children}

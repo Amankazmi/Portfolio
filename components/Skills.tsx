@@ -52,7 +52,7 @@ export default function Skills() {
         : SKILLS;
 
     return (
-        <section id="skills" className="py-20 md:py-32 relative overflow-hidden bg-bg-primary">
+        <section id="skills" className="py-20 md:py-32 relative overflow-hidden bg-bg-primary section-fade-edge">
             <div className="shader-grain" />
 
             {/* Blobs */}
@@ -218,7 +218,7 @@ export default function Skills() {
                                     {["Supabase", "Firebase", "MySQL", "Docker", "Git", "Vercel", "Shadcn UI", "EJS"].map(s => (
                                         <span
                                             key={s}
-                                            className="px-2.5 py-1 rounded-lg text-xs text-white/40 border border-white/8 bg-white/[0.02] hover:text-white/60 transition-colors"
+                                            className="px-2.5 py-1 rounded-lg text-xs text-white/40 border border-white/8 bg-white/[0.02] hover:text-white/60 transition-colors scroll-reveal"
                                         >
                                             {s}
                                         </span>

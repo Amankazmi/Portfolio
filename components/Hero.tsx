@@ -161,7 +161,7 @@ export default function Hero() {
                     </Link>
 
                     {/* SECONDARY */}
-                    <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+                    <a href="/LDCE_IT_AMAN_KAZMI_RESUME.pdf" target="_blank" rel="noopener noreferrer" download="Aman_Kazmi_Resume.pdf">
                         <motion.button
                             whileHover={{ scale: 1.04 }}
                             whileTap={{ scale: 0.96 }}
