@@ -6,6 +6,7 @@ import emailjs from "@emailjs/browser";
 import { Send, Loader2, Mail, Github, Linkedin, MapPin, Clock, CheckCircle2, ArrowUpRight, User, MessageSquare, Globe, Sparkles, Zap } from "lucide-react";
 import { AsciiArt } from "@/components/ui/ascii-art";
 import { PERSONAL_INFO } from "@/data/portfolio";
+import { Phone } from "lucide-react";
 
 const CONTACT_ITEMS = [
     {
@@ -65,7 +66,7 @@ const SOCIALS = [
     },
 ];
 
-type FieldId = "name" | "email" | "message";
+type FieldId = "name" | "email" | "phone" | "message";
 
 export default function Contact() {
     const formRef = useRef<HTMLFormElement>(null);
@@ -316,7 +317,7 @@ export default function Contact() {
                                                     <p className="text-white/30 text-sm pl-3">I typically respond within 24 hours.</p>
                                                 </div>
 
-                                                {/* Name + Email row */}
+                                                {/* Name, Email, Phone row */}
                                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                                     {/* Name */}
                                                     <div className="flex flex-col gap-2">
@@ -356,6 +357,27 @@ export default function Contact() {
                                                                 required
                                                                 placeholder="hello@example.com"
                                                                 onFocus={() => setFocusedField("email")}
+                                                                onBlur={() => setFocusedField(null)}
+                                                                className="bg-transparent w-full text-white text-sm placeholder-white/20 focus:outline-none"
+                                                            />
+                                                        </div>
+                                                    </div>
+
+                                                    {/* Phone Number (Full Width in Grid) */}
+                                                    <div className="flex flex-col gap-2 sm:col-span-2">
+                                                        <label className={`text-[10px] font-bold uppercase tracking-[0.18em] transition-colors duration-300 ${focusedField === "phone" ? "text-accent-blue" : "text-white/25"
+                                                            }`}>Phone Number (Optional)</label>
+                                                        <div className={`flex items-center gap-3 px-4 py-3 rounded-xl border bg-white/[0.03] transition-all duration-300 ${focusedField === "phone"
+                                                            ? "border-accent-blue/50 shadow-[0_0_0_3px_rgba(59,130,246,0.1)] bg-white/[0.05]"
+                                                            : "border-white/8 hover:border-white/15"
+                                                            }`}>
+                                                            <Phone size={14} className={`shrink-0 transition-colors duration-300 ${focusedField === "phone" ? "text-accent-blue" : "text-white/20"
+                                                                }`} />
+                                                            <input
+                                                                type="tel"
+                                                                name="user_phone"
+                                                                placeholder="+1 (555) 000-0000"
+                                                                onFocus={() => setFocusedField("phone")}
                                                                 onBlur={() => setFocusedField(null)}
                                                                 className="bg-transparent w-full text-white text-sm placeholder-white/20 focus:outline-none"
                                                             />
